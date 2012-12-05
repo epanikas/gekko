@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:gk="http://www.gekko.org/schema/gk"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+
+
+	<gk:config packagesToScan="[org.gekko.test.service.]" />
+
+	<bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+		<property name="customEditors">
+			<map>
+				<entry key="java.util.Map">
+					<bean class="org.gekko.beanfactory.propertyeditor.JsonPropertyEditorForMap" />
+				</entry>
+				<entry key="java.util.Set">
+					<bean class="org.gekko.beanfactory.propertyeditor.JsonPropertyEditorForSet" />
+				</entry>
+				<entry key="java.util.List">
+					<bean class="org.gekko.beanfactory.propertyeditor.JsonPropertyEditorForList" />
+				</entry>
+			</map>
+		</property>
+	</bean>
+
+
+	<gk:car-shop-directory gk:id="dir1">				 
+		<gk:defaultShop><gk:sport-car-shop shopType="sport"/></gk:defaultShop>
+	</gk:car-shop-directory>
+	
+	<gk:car-shop-directory  gk:id="dir2">				 
+		<gk:default-shop><gk:vacation-car-shop shopType="vacation"/></gk:default-shop>
+	</gk:car-shop-directory>
+	
+	<gk:car-shop-directory  gk:id="dir3">				 
+		<gk:shop-list>
+			<gk:sport-car-shop shopType="vacation"/>
+			<gk:vacation-car-shop shopType="vacation"/>
+		</gk:shop-list>
+	</gk:car-shop-directory>
+	
+	<gk:car-shop-directory  gk:id="dir4">
+		<gk:shops>
+			<gk:sport-car-shop gk:map-key="sport" shopType="vacation"/>
+			<gk:vacation-car-shop gk:map-key="vacation" shopType="vacation"/>
+		</gk:shops>
+	</gk:car-shop-directory>
+	
+	    
+</beans>
+	

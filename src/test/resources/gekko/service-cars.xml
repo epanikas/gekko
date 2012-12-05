@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:gk="http://www.gekko.org/schema/gk"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+
+
+
+	<gk:config packagesToScan="[org.gekko.test.service.]" />
+
+
+	<gk:car-service gk:id="cars1" gk:qualifiers="[sport, vacation]"/>
+	
+	<gk:CarService gk:id="cars2" />
+	
+	<gk:org.gekko.test.service.cars.CarService gk:id="cars3" />
+
+	<gk:delegating-car-service delegate="{ref: cars1}" />
+
+	<gk:sport-car-shop shopType="sport"/>
+
+	<gk:vacation-car-shop shopType="vacation" cars="{ref: cars2}" />
+	<gk:vacation-car-shop shopType="vacation" cars="{autowired: required}" />
+	<gk:vacation-car-shop shopType="vacation" cars="{autowired: optional}" />
+	<gk:vacation-car-shop shopType="vacation" cars="{qualified: vacation}" />
+	<gk:fiat-punto-service />
+
+	<gk:car-shop-directory defaultShop="{ref: sport-car-shop}" 
+		shops="{sport: {ref: sport-car-shop},
+				vacation: {ref: vacation-car-shop}}" />
+
+	<gk:car-shop-directory defaultShop="{autowired: required}" 
+		shops="{sport: {autowired: optional},
+				vacation: {qualified: vacation},
+				business: {autowired: optional, qualified: sport}}" />
+
+
+	<!-- bean class="org.gekko.service.CarsService" >
+		<qualifier value="default-cars" type="org.springframework.beans.factory.annotation.Qualifier"/-->
+	
+		<!-- qualifier value="default-cars" type="org.springframework.beans.factory.annotation.Qualifier">
+			<attribute key="k1" value="vacation-cars"/>
+			<attribute key="k2" value="sport-cars"/>
+		</qualifier-->
+	<!-- /bean-->
+
+	<!-- bean id="cars-service1" class="org.gekko.service.CarsService" />
+
+	<bean class="org.gekko.service.DelegatingCarsService">
+		<property name="delegate" ref="cars-service1" />
+	</bean-->
+	
+	
+	<!-- bean id="vacation-shop" class="org.gekko.service.VacationCarsShop" /-->
+    
+</beans>

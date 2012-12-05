@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:gk="http://www.gekko.org/schema/gk"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+
+
+	<gk:config packagesToScan="[org.gekko.test.service.]" />
+
+
+	<bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+		<property name="customEditors">
+			<map>
+				<entry key="java.util.Map">
+					<bean class="org.gekko.beanfactory.propertyeditor.JsonPropertyEditorForMap" />
+				</entry>
+				<entry key="java.util.Set">
+					<bean class="org.gekko.beanfactory.propertyeditor.JsonPropertyEditorForSet" />
+				</entry>
+				<entry key="java.util.List">
+					<bean class="org.gekko.beanfactory.propertyeditor.JsonPropertyEditorForList" />
+				</entry>
+			</map>
+		</property>
+	</bean>
+
+	<gk:sport-car-shop shopType="vacation" gk:qualifiers="[sport]" />
+	
+	<gk:vacation-car-shop shopType="vacation" gk:qualifiers="[vacation]" />
+
+	<gk:car-shop-directory defaultShop="{ref: sport-car-shop}"
+		shops="{sport: {qualified: sport},
+				vacation: {qualified: vacation},
+				business: {autowired: optional, qualified: sport}}" />
+
+	    
+</beans>

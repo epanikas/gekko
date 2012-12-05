@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:gk="http://www.gekko.org/schema/gk"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+
+
+	<gk:config packagesToScan="[org.gekko.test.service.]" />
+
+	<gk:property-editor target="java.util.List"><gk:json-property-editor-for-list/></gk:property-editor>
+	<gk:property-editor target="java.util.Map"><gk:json-property-editor-for-map/></gk:property-editor>
+	<gk:property-editor target="java.util.Set"><gk:json-property-editor-for-set/></gk:property-editor>
+
+	<gk:car-shop-directory defaultShop="{ref: sport-car-shop}"
+		shops="{sport: {qualified: sport},
+				vacation: {qualified: vacation},
+				business: {autowired: optional, qualified: sport}}" />
+
+	    
+</beans>
+	
