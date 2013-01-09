@@ -10,13 +10,13 @@
 
 
 
-	<gk:config packagesToScan="[org.gekko.test.service.]" />
+	<gk:config packagesToScan="[com.googlecode.gekko.test.service.]" />
 
 	<gk:vacation-car-shop shopType="vacation" gk:qualifiers="[vacation, sport]"/>
 
 	<gk:car-shop-directory defaultShop="{qualified: sport}" />
 
-	<bean class="org.gekko.service.shops.SportCarShop" >
+	<bean class="com.googlecode.gekko.service.shops.SportCarShop" >
 		<qualifier value="sport" type="org.springframework.beans.factory.annotation.Qualifier"/>	
 	</bean>
 

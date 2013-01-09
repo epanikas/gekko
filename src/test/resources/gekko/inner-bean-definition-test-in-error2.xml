@@ -10,7 +10,7 @@
 
 
 
-	<gk:config packagesToScan="[org.gekko.test.service.]" />
+	<gk:config packagesToScan="[com.googlecode.gekko.test.service.]" />
 
 	<gk:vacation-car-shop gk:map-key="vacation" />
 

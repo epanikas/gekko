@@ -24,7 +24,7 @@
 	</map-->
 			
 	<util:list id="kaka">
-		<value><bean class="org.gekko.beanfactory.propertyeditor.JsonPropertyEditorForList" /></value>
+		<value><bean class="com.googlecode.gekko.beanfactory.propertyeditor.JsonPropertyEditorForList" /></value>
 	</util:list>
 
     

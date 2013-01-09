@@ -10,7 +10,7 @@
 
 
 
-	<gk:config packagesToScan="[org.gekko.test.service.]" />
+	<gk:config packagesToScan="[com.googlecode.gekko.test.service.]" />
 
 	<gk:property-editor target="java.util.List"><gk:json-property-editor-for-list/></gk:property-editor>
 	<gk:property-editor target="java.util.Map"><gk:json-property-editor-for-map/></gk:property-editor>

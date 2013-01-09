@@ -11,14 +11,14 @@
 
 
 
-	<gk:config packagesToScan="[org.gekko.test.service.]" />
+	<gk:config packagesToScan="[com.googlecode.gekko.test.service.]" />
 
 
 	<gk:car-service gk:id="cars1" gk:qualifiers="[sport, vacation]"/>
 	
 	<gk:CarService gk:id="cars2" />
 	
-	<gk:org.gekko.test.service.cars.CarService gk:id="cars3" />
+	<gk:com.googlecode.gekko.test.service.cars.CarService gk:id="cars3" />
 
 	<gk:delegating-car-service delegate="{ref: cars1}" />
 

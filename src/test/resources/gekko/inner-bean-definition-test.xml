@@ -10,19 +10,19 @@
 
 
 
-	<gk:config packagesToScan="[org.gekko.test.service.]" />
+	<gk:config packagesToScan="[com.googlecode.gekko.test.service.]" />
 
 	<bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
 		<property name="customEditors">
 			<map>
 				<entry key="java.util.Map">
-					<bean class="org.gekko.beanfactory.propertyeditor.JsonPropertyEditorForMap" />
+					<bean class="com.googlecode.gekko.beanfactory.propertyeditor.JsonPropertyEditorForMap" />
 				</entry>
 				<entry key="java.util.Set">
-					<bean class="org.gekko.beanfactory.propertyeditor.JsonPropertyEditorForSet" />
+					<bean class="com.googlecode.gekko.beanfactory.propertyeditor.JsonPropertyEditorForSet" />
 				</entry>
 				<entry key="java.util.List">
-					<bean class="org.gekko.beanfactory.propertyeditor.JsonPropertyEditorForList" />
+					<bean class="com.googlecode.gekko.beanfactory.propertyeditor.JsonPropertyEditorForList" />
 				</entry>
 			</map>
 		</property>
